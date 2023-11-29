@@ -5,6 +5,7 @@
 ```
 yarn install
 ```
+修改 .env.example 为 .env
 
 ## 配置环境变量
 在项目根目录中创建 .env 文件，并填写以下信息：
