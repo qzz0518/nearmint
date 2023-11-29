@@ -40,7 +40,7 @@ node transfer.js
 默认给生成的 near_wallets.json 里面所有的地址转1个near
 
 
-## 余额查询
+## MINT 数量查询
 ```
 node query.js
 ```
