@@ -19,8 +19,8 @@ async function main() {
     const contractArgs = {
         p: "nrc-20",
         op: "mint",
-        tick: "neat",
-        amt: "100000000"
+        amt: "100000000",
+        tick: "neat"
     };
 
 
