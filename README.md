@@ -30,3 +30,11 @@ node wallet_gen.js
 ```
 
 代码里面可以调整生成的个数，implicitAccountId 才是你的地址
+
+## 批量转账
+
+```
+node transfer.js
+```
+请先执行批量生成，然后再执行批量转账
+默认给生成的 near_wallets.json 里面所有的地址转1个near

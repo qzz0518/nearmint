@@ -2,3 +2,4 @@
 node_modules
 yarn.lock
 .idea
+near_wallets.json
