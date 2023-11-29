@@ -1,4 +1,3 @@
-const bip39 = require('bip39');
 const nearAPI = require('near-api-js');
 const base58 = require('bs58');
 const fs = require('fs');
