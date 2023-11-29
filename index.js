@@ -14,15 +14,15 @@ async function main() {
 
     const near = await connect(config);
     let walletData = [];
+    const mnemonic = process.env.MNEMONIC;
+    const { secretKey } = parseSeedPhrase(mnemonic);
+    const keyPair = KeyPair.fromString(secretKey);
+    await config.keyStore.setKey(config.networkId, process.env.CONTRACT_NAME, keyPair);
+    walletData.push({ privateKey: secretKey, implicitAccountId: process.env.CONTRACT_NAME });
     try {
         walletData = JSON.parse(readFileSync('near_wallets.json', 'utf-8'));
     } catch (e) {
         console.log('未找到 near_wallets.json，使用配置的主钱包');
-        const mnemonic = process.env.MNEMONIC;
-        const { secretKey } = parseSeedPhrase(mnemonic);
-        const keyPair = KeyPair.fromString(secretKey);
-        await config.keyStore.setKey(config.networkId, process.env.CONTRACT_NAME, keyPair);
-        walletData.push({ privateKey: secretKey, implicitAccountId: process.env.CONTRACT_NAME });
     }
 
     const contractArgs = {
