@@ -47,7 +47,8 @@ async function main() {
                         attachedDeposit: "0",
                     });
                     let hash = result.transaction.hash;
-                    console.log(`${wallet.implicitAccountId}, 第 ${i + 1} 次操作成功: ${'https://nearblocks.io/zh-cn/txns/' + hash}`);
+                    // console.log(`${wallet.implicitAccountId}, 第 ${i + 1} 次操作成功: ${'https://nearblocks.io/zh-cn/txns/' + hash}`);
+                    console.log(`${wallet.implicitAccountId}, 第 ${i + 1} 次操作成功: ${'https://getblock.io/explorers/near/transactions/' + hash}`);
                 } else {
                     console.log(`账户 ${wallet.implicitAccountId} 余额不足`);
                     break; // 如果余额不足，跳出循环
@@ -58,7 +59,7 @@ async function main() {
         }
     }
     // 10 次操作 是每个钱包都打10次
-    Promise.all(walletData.map(wallet => performInscribe(wallet, contractArgs, 10)))
+    Promise.all(walletData.map(wallet => performInscribe(wallet, contractArgs, 9999)))
         .then(() => {
             console.log("所有操作完成");
         })
