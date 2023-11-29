@@ -23,3 +23,10 @@ MNEMONIC=''
 ```
 node index.js
 ```
+
+## 钱包批量生成
+```
+node wallet_gen.js
+```
+
+代码里面可以调整生成的个数，implicitAccountId 才是你的地址
