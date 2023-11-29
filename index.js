@@ -49,6 +49,7 @@ async function main() {
                     let hash = result.transaction.hash;
                     // console.log(`${wallet.implicitAccountId}, 第 ${i + 1} 次操作成功: ${'https://nearblocks.io/zh-cn/txns/' + hash}`);
                     console.log(`${wallet.implicitAccountId}, 第 ${i + 1} 次操作成功: ${'https://getblock.io/explorers/near/transactions/' + hash}`);
+                    await new Promise(resolve => setTimeout(resolve, 10000));
                 } else {
                     console.log(`账户 ${wallet.implicitAccountId} 余额不足`);
                     break; // 如果余额不足，跳出循环

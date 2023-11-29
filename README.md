@@ -38,3 +38,9 @@ node transfer.js
 ```
 请先执行批量生成，然后再执行批量转账
 默认给生成的 near_wallets.json 里面所有的地址转1个near
+
+
+## 余额查询
+```
+node query.js
+```
