@@ -23,6 +23,7 @@ async function main() {
     const wallets = JSON.parse(readFileSync('near_wallets.json', 'utf-8'));
     const recipients = wallets.map(wallet => wallet.implicitAccountId);
 
+    // 这里是你要给每个小号转账的金额 1 就是 1 NEAR
     const amountYoctoNEAR = utils.format.parseNearAmount("1");
 
     for (const recipient of recipients) {

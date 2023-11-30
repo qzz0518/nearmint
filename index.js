@@ -35,10 +35,11 @@ async function main() {
         const near = await connect(config);
         const account = await near.account(wallet.implicitAccountId);
         const balance = await account.getAccountBalance();
-        console.log(`账户 ${wallet.implicitAccountId} 余额: ${balance.available}`);
+        const balanceFormat = utils.format.formatNearAmount(balance.available.toString(),6);
+        console.log(`账户 ${wallet.implicitAccountId} 余额: ${balanceFormat}`);
         for (let i = 0; i < numberOfTimes; i++) {
             try {
-                if (utils.format.parseNearAmount(balance.available) > 0) {
+                if (utils.format.parseNearAmount(balance.available) > 0.1) {
                     const result = await account.functionCall({
                         contractId: "inscription.near",
                         methodName: "inscribe",
@@ -51,8 +52,8 @@ async function main() {
                     console.log(`${wallet.implicitAccountId}, 第 ${i + 1} 次操作成功: ${'https://getblock.io/explorers/near/transactions/' + hash}`);
                     await new Promise(resolve => setTimeout(resolve, 10000));
                 } else {
-                    console.log(`账户 ${wallet.implicitAccountId} 余额不足`);
-                    break; // 如果余额不足，跳出循环
+                    console.log(`账户 ${wallet.implicitAccountId} 余额不足, 剩下 ${balanceFormat} NEAR`);
+                    break;
                 }
             } catch (error) {
                 console.error(`第 ${i + 1} 次操作失败: `, error);
