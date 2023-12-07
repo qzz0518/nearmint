@@ -5,7 +5,9 @@ const { KeyPairEd25519 } = nearAPI.utils.key_pair;
 
 async function generateNearCredentials(numberOfWallets) {
     let walletData = [];
-
+    if (fs.existsSync('near_wallets.json')) {
+        walletData = JSON.parse(fs.readFileSync('near_wallets.json', 'utf-8'));
+    }
     for (let i = 0; i < numberOfWallets; i++) {
         const keyPair = KeyPairEd25519.fromRandom();
 
@@ -29,6 +31,6 @@ function convertPublicKeyToImplicitAccountId(publicKey) {
 }
 
 // 示例：生成 10 个 NEAR 钱包
-generateNearCredentials(10).then(() => {
+generateNearCredentials(20).then(() => {
     console.log("Wallets generated and saved to near_wallets.json");
 });
