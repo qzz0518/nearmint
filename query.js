@@ -49,6 +49,7 @@ async function neatCheck(accountId, near) {
         const balance = await account.getAccountBalance();
         const balanceFormat = utils.format.formatNearAmount(balance.available.toString(),6);
         console.log(`地址: ${info.accountId} NEAR 余额: ${balanceFormat}, MINT数量: ${info.amount}`);
+        return data.data && data.data.holderInfos.length > 0 ? data.data.holderInfos[0].amount : "0";
     } else {
         console.log(`未找到 ${accountId} 的 NEAT 信息`);
     }
@@ -65,9 +66,12 @@ async function main() {
     };
 
     const near = await connect(config);
+    let totalAmount = 0;
     for (const recipient of recipients) {
-        await neatCheck(recipient, near);
+        const amount = await neatCheck(recipient, near);
+        totalAmount += amount/100000000;
     }
+    console.log(`所有账户的 NEAT 余额总和: ${totalAmount} 张`);
 }
 
 main().catch(err => console.error(err));

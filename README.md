@@ -45,6 +45,13 @@ node transfer.js
 node query.js
 ```
 
+## 单纯MINT 数量统计
+把地址放到 1.txt 里面，1行一个 然后执行
+```
+node query2.js
+```
+
+
 ## 归集 neat 到主账号
 请在归集前 使用query 查询小号的余额，然后确认小号有足够的gas
 然后再确认.env的CONTRACT_NAME是你的主账号地址，然后再执行归集
