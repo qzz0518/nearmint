@@ -58,3 +58,8 @@ node query2.js
 ```
 node collect.js
 ```
+
+## 归集 near 到主账号
+```
+node transferToMain.js
+```
